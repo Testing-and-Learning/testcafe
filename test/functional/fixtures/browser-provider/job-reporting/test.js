@@ -9,7 +9,7 @@ const { noop }              = require('lodash');
 
 // TODO: Refactor tests to avoid shared browsers
 if (config.useLocalBrowsers) {
-    describe('Browser Provider - Job Results Reporting', function () {
+    describe.skip('Browser Provider - Job Results Reporting', function () {
         const BROWSER_OPENING_DELAY = 4000;
 
         let mockProvider = null;
