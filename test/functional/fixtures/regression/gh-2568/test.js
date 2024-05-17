@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 
 function removeWhitespaces (str) {
+    if (!str) return '';
     return str.replace(/\s+|\n/g, ' ').trim();
 }
 
@@ -22,7 +23,7 @@ describe('[Regression](GH-2568)', function () {
             });
     });
 
-    it.skip('client function selector', function () {
+    it('client function selector', function () {
         return runTests('testcafe-fixtures/index.js', 'client function selector', { selectorTimeout: 100, shouldFail: true })
             .catch(function (errs) {
                 assertSelectorCallstack(errs[0], `
