@@ -128,7 +128,7 @@ if (config.useLocalBrowsers) {
                 })
                 .catch(error => {
                     expect(error.message).eql('Connection error');
-                    // expect(mockProvider.plugin.state['failed-1'].result).eql(mockProvider.plugin.JOB_RESULT.errored);
+                    expect(mockProvider.plugin.state['failed-1'].result).eql(mockProvider.plugin.JOB_RESULT.errored);
                     expect(mockProvider.plugin.state['failed-1'].data.message).eql('Connection error');
                     expect(mockProvider.plugin.state['id-2'].result).eql(mockProvider.plugin.JOB_RESULT.aborted);
                 });
