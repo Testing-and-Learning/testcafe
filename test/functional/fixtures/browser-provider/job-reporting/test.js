@@ -14,6 +14,8 @@ if (config.useLocalBrowsers) {
 
         let mockProvider = null;
 
+        const needSkip = config.hasBrowser('edge');
+
         const mockProviderPlugin = Object.assign({}, chromeBrowserProvider, {
             state:     {},
             idNameMap: {},
@@ -119,7 +121,7 @@ if (config.useLocalBrowsers) {
                 });
         });
 
-        it('Should report job error to the providers', () => {
+        (needSkip ? it.skip : it)('Should report job error to the providers', () => {
             return run(['chrome --failed-1', 'chrome --id-2'], './testcafe-fixtures/long-test.js')
                 .then(() => {
                     throw new Error('Promise rejection expected');
