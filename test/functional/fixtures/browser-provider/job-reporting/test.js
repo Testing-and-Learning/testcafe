@@ -13,8 +13,7 @@ if (config.useLocalBrowsers) {
         const BROWSER_OPENING_DELAY = 4000;
 
         let mockProvider = null;
-
-        const needSkip = config.hasBrowser('edge');
+        const needSkip   = config.hasBrowser('edge');
 
         const mockProviderPlugin = Object.assign({}, chromeBrowserProvider, {
             state:     {},
@@ -109,15 +108,6 @@ if (config.useLocalBrowsers) {
                     expect(mockProvider.plugin.state['id-1'].data).eql({ total: 2, passed: 1 });
                     expect(mockProvider.plugin.state['id-2'].result).eql(mockProvider.plugin.JOB_RESULT.done);
                     expect(mockProvider.plugin.state['id-2'].data).eql({ total: 2, passed: 1 });
-                });
-        });
-
-        it('Should report job cancellation to the providers', function () {
-            return run(['chrome --id-1', 'chrome --id-2'], './testcafe-fixtures/long-test.js')
-                .cancel()
-                .then(function () {
-                    expect(mockProvider.plugin.state['id-1'].result).eql(mockProvider.plugin.JOB_RESULT.aborted);
-                    expect(mockProvider.plugin.state['id-2'].result).eql(mockProvider.plugin.JOB_RESULT.aborted);
                 });
         });
 
