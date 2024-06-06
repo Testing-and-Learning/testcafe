@@ -38,4 +38,4 @@ jobs:
               run: npm install ./$(ls *.tgz | tail -n 1)
 
             - name: Check licenses
-              run: npx gulp checkLicenses
+              run: npx gulp check-licenses
