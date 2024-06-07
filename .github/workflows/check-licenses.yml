@@ -46,10 +46,5 @@ jobs:
             - name: Install created package
               run: npm install ./$(ls *.tgz | tail -n 1)
 
-            - name: Install created package
-              run: |
-                  npm install gulp@^4.0.2
-                  npm install gulp-step@^1.0.1
-
             - name: Check licenses
-              run: npx gulp check-licenses
+              run: node -e "require('./test/dependency-licenses-checker')()"
