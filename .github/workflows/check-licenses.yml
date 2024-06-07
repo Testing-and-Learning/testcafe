@@ -25,9 +25,6 @@ jobs:
               with:
                   node-version: latest
 
-            - name: Remove package-lock.json
-              run: rm -f package-lock.json
-
             - name: Install dependencies
               run: npm install
 
@@ -37,8 +34,20 @@ jobs:
             - name: Pack the application
               run: npm pack
 
+            - name: Remove package-lock.json
+              run: |
+                  rm -f package.json
+                  rm -f package-lock.json
+                  rm -rf node_modules
+
+            - name: Initialize new package.json
+              run: npm init -y
+
             - name: Install created package
               run: npm install ./$(ls *.tgz | tail -n 1)
+
+            - name: Install created package
+              run: npm install gulp@^4.0.2
 
             - name: Check licenses
               run: npx gulp check-licenses
