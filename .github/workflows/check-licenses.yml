@@ -44,7 +44,7 @@ jobs:
               run: npm init -y
 
             - name: Install created package
-              run: npm install ./$(ls *.tgz | tail -n 1) && npm install license-checker@^20.0.0
+              run: npm install ./$(ls *.tgz | tail -n 1) && npm install license-checker@^20.0.0 --save-dev
 
             - name: Check licenses
               run: node -e "require('./test/dependency-licenses-checker')()"
