@@ -34,17 +34,17 @@ jobs:
             - name: Pack the application
               run: npm pack
 
-            - name: Remove package-lock.json
-              run: |
-                  rm -f package.json
-                  rm -f package-lock.json
-                  rm -rf node_modules
+            - name: Create folder
+              run: mkdir temp
+
+            - name: Move to the created folder
+              run: cd temp
 
             - name: Initialize new package.json
               run: npm init -y
 
             - name: Install created package
-              run: npm install ./$(ls *.tgz | tail -n 1) && npm install license-checker@^20.0.0 --save-dev
+              run: npm install ./$(ls *.tgz | tail -n 1)
 
             - name: Check licenses
               run: node -e "require('./test/dependency-licenses-checker')()"
