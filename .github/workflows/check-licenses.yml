@@ -35,10 +35,7 @@ jobs:
               run: npm pack
 
             - name: Create folder
-              run: mkdir temp && cd temp && npm init -y
-
-            - name: Install created package
-              run: npm install ./$(ls *.tgz | tail -n 1) && ls
+              run: mkdir temp && cd temp && npm init -y && npm install ../*.tgz && ls
 
             - name: Check licenses
               run: npx gulp check-licenses
