@@ -35,16 +35,10 @@ jobs:
               run: npm pack
 
             - name: Create folder
-              run: mkdir temp
-
-            - name: Move to the created folder
-              run: cd temp
-
-            - name: Initialize new package.json
-              run: npm init -y
+              run: mkdir temp && cd temp && npm init -y
 
             - name: Install created package
-              run: npm install ./$(ls *.tgz | tail -n 1)
+              run: npm install ./$(ls *.tgz | tail -n 1) && ls
 
             - name: Check licenses
-              run: node -e "require('./test/dependency-licenses-checker')()"
+              run: npx gulp check-licenses
