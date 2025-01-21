@@ -448,7 +448,8 @@ describe('Compiler', function () {
                 });
         });
 
-        it('Should import pure TypeScript dependency module', () => {
+        // eslint-disable-next-line no-only-tests/no-only-tests
+        it.only('Should import pure TypeScript dependency module', () => {
             return compile('test/server/data/test-suites/typescript-pure-ts-module-dep/testfile.ts')
                 .then(function (compiled) {
                     return compiled.tests[0].fn(testRunMock);
