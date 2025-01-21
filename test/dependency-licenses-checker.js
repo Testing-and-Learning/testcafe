@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const path           = require('path');
 const fs             = require('fs');
 const licenseChecker = require('license-checker').init;
@@ -53,6 +54,7 @@ module.exports = function () {
             }
 
             Object.keys(modules).forEach(module => {
+                console.log(module);
                 const licenses = modules[module].licenses;
 
                 if (typeof licenses === 'string')

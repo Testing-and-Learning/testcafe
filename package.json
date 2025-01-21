@@ -83,7 +83,7 @@
     "@types/node": "20.14.5",
     "address": "^2.0.2",
     "async-exit-hook": "^1.1.2",
-    "babel-plugin-module-resolver": "5.0.0",
+    "babel-plugin-module-resolver": "^5.0.2",
     "babel-plugin-syntax-trailing-function-commas": "^6.22.0",
     "bowser": "^2.8.1",
     "callsite": "^1.0.0",
